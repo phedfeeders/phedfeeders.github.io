@@ -406,7 +406,7 @@ function getFeederInfo() {
   for (const [region, feederList] of Object.entries(feeders)) {
     if (feederList[feederName]) {
       const voltage = feederList[feederName].voltage;
-      const article = voltage === "11kV" ? "an" : "a";
+      
 
       // Get network manager details
       const manager = feederList["network_manager"];
@@ -414,7 +414,7 @@ function getFeederInfo() {
       const managerPhone = manager ? manager.phone : "N/A";
 
       resultDiv.innerHTML = `
-        <strong>${feederName}</strong> is ${article} <strong>${voltage}</strong> feeder in <strong>${region}</strong> region.<br><br>
+        <strong>${feederName}</strong>  <strong>${voltage}</strong> feeder is in <strong>${region}</strong> region.<br><br>
         <strong>Network Manager:</strong> ${managerName} <br>
         <strong>Phone:</strong> ${managerPhone}
       `;
