@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feeder Region Finder</title>
+  <style>
+	  
+	  body {
+            background: url("../../../xampp/htdocs/IMG_1101-Copy-scaled 1.jpg") no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+		  
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+/*
+    body {
+		
+		
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+*/
+    h2 {
+      color: #333;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 400px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body style="background-color: aliceblue">
+<div class="container">
+        <h2>PHED Feeder-Region Finder</h2>
+        <div class="input-group">
+            <input type="text" id="feederInput" placeholder="Enter feeder name (e.g., Amika)" list="feederSuggestions">
+            <button onclick="getFeederInfo()">Find</button>
+        </div>
+        <datalist id="feederSuggestions"></datalist>
+        <div id="result"></div>
+    </div>
+
+  <script>
+   const feeders = {
+  "BAYELSA": {
+	"network_manager": { name: "Victor Esu", phone: "+2348030947536" },
+    "LOCAL GOVERNMENT": { voltage: "11kV" },
+    "NDU": { voltage: "11kV" },
+    "AMASOMA II": { voltage: "11kV" },
+    "OFONI": { voltage: "11kV" },
+    "SAGBAMA": { voltage: "11kV" },
+    "POLAKU": { voltage: "11kV" },
+    "AGBIA": { voltage: "11kV" },
+    "OKOTIAMA": { voltage: "11kV" },
+    "KOLOBIRI": { voltage: "11kV" },
+    "IMIRINGI": { voltage: "33kV" },
+    "AGUDAMA": { voltage: "33kV" },
+    "OPOLO": { voltage: "33kV" },
+    "AMASOMA": { voltage: "33kV" },
+    "TUNGBO": { voltage: "33kV" },
+    "GOVT HOUSE": { voltage: "33kV" },
+    "GBARAIN": { voltage: "33kV" }
+  },
+  "CALABAR": {
+	"network_manager": { name: "Tom Udofia", phone: "+2348065957260" },
+    "8 MILES": { voltage: "11kV" },
+    "ESUK UTAN": { voltage: "11kV" },
+    "FEDERAL HOUSING": { voltage: "11kV" },
+    "INDUSTRIAL": { voltage: "11kV" },
+    "ESSIEN TOWN": { voltage: "11kV" },
+    "MCC": { voltage: "11kV" },
+    "LEOPARD": { voltage: "11kV" },
+    "ESSIEN I /MARIANA": { voltage: "11kV" },
+    "CAMEROUN": { voltage: "11kV" },
+    "UNICAL": { voltage: "11kV" },
+    "GOLDIE": { voltage: "11kV" },
+    "TARGET": { voltage: "11kV" },
+    "CRUTECH": { voltage: "11kV" },
+    "ANANTIGHA": { voltage: "11kV" },
+    "IKOT ENEOBONG": { voltage: "11kV" },
+    "BACOCO": { voltage: "11kV" },
+	"BAO YAO": { voltage: "33kV" },
+    "AKAMKPA": { voltage: "33kV" },
+    "EPZ1": { voltage: "33kV" },
+    "EPZ2": { voltage: "33kV" },
+    "WATERBOARD": { voltage: "33kV" },
+    "OLAM": { voltage: "33kV" },
+    "FLOUR MILL": { voltage: "33kV" },
+    "NIGER MILLS": { voltage: "33kV" },
+    "DIAMOND HILLS": { voltage: "33kV" },
+    "STATE HOUSING": { voltage: "33kV" },
+    "AMIKA": { voltage: "33kV" },
+    "ADIABO": { voltage: "33kV" },
+    "TRANSCORP": { voltage: "33kV" }
+  },
+  "OGOJA": {
+	"network_manager": { name: "Tom Udofia", phone: "+2348065957260" },
+    "IKOM TOWN": { voltage: "11kV" },
+    "FOUR CORNER": { voltage: "11kV" },
+	"ITIGIDI": { voltage: "33kV" },
+    "YAHE": { voltage: "33kV" },
+    "KATSINA ALA": { voltage: "33kV" }
+  },
+  "ALPHA-1": {
+	"network_manager": { name: "Brume Adogbeji", phone: "+2348075819443" },
+    "SHELL INDUSTRIAL": { voltage: "11kV" },
+    "BARRACKS": { voltage: "11kV" },
+    "RUMUOMOI": { voltage: "11kV" },
+    "WATER LINES": { voltage: "11kV" },
+    "BORI CAMP": { voltage: "11kV" },
+    "RUMUOKWUTA": { voltage: "11kV" },
+    "OMERELU": { voltage: "11kV" },
+    "NEW GRA": { voltage: "11kV" },
+    "ELEKAHIA ESTATE": { voltage: "11kV" },
+    "ELEKAHIA VILLAGE": { voltage: "11kV" },
+    "NIGER CAT": { voltage: "11kV" },
+    "NKPOGU": { voltage: "11kV" },
+    "AMADI AMA": { voltage: "11kV" },
+    "RUMUKALAGBO": { voltage: "11kV" },
+    "OLD ABA ROAD": { voltage: "11kV" },
+    "RUMUOGBA": { voltage: "11kV" },
+    "RUMUOROLU": { voltage: "11kV" },
+    "RUMUIBEKWE": { voltage: "11kV" },
+    "RIVOC": { voltage: "11kV" },
+    "NDABROS": { voltage: "11kV" },
+    "WATER WORKS": { voltage: "11kV" },
+    "FIMIE": { voltage: "11kV" },
+	"INDUSTRIAL(T/A)": { voltage: "33kV" },
+    "STADIUM(T/A)": { voltage: "33kV" },
+    "ORDINANCE": { voltage: "33kV" },
+    "RUMUOLA": { voltage: "33kV" },
+    "REFINERY LINE 2": { voltage: "33kV" },
+    "RAINBOW": { voltage: "33kV" },
+    "AKANI": { voltage: "33kV" },
+    "TRANS AMADI": { voltage: "33kV" }
+  },
+  "ALPHA-2": {
+	"network_manager": { name: "Magnus Uchechukwu", phone: "+2348068778860" },
+    "JETTY": { voltage: "11kV" },
+    "OZUBOKO": { voltage: "11kV" },
+    "ODILI ROAD": { voltage: "11kV" },
+    "OKURU": { voltage: "11kV" },
+    "GULF ESTATE": { voltage: "11kV" },
+    "AZUABIE": { voltage: "11kV" },
+    "GLASS FACTORY": { voltage: "11kV" },
+    "NVUIGWE": { voltage: "11kV" },
+    "OGBATAI": { voltage: "11kV" },
+    "NPA": { voltage: "11kV" },
+    "CHURCHILL": { voltage: "11kV" },
+    "STATION ROAD": { voltage: "11kV" },
+    "AMADI NORTH": { voltage: "11kV" },
+    "HAROLD WILSON": { voltage: "11kV" },
+    "NEW ROAD": { voltage: "11kV" },
+    "MARINE BASE": { voltage: "11kV" },
+    "EASTERN BYPASS": { voltage: "11kV" },
+	 "NLNG": { voltage: "33kV" },
+    "ABULOMA": { voltage: "33kV" },
+    "RSPUB 1": { voltage: "33kV" },
+    "SECRETARIAT": { voltage: "33kV" },
+    "BOROKIRI": { voltage: "33kV" }
+  },
+  "BETA-1": {
+	"network_manager": { name: "Kenechukwu Igboamalu", phone: "+2348035523086" },
+    "AKPAJO": { voltage: "11kV" },
+    "PALACE ROAD": { voltage: "11kV" },
+    "CHAIRMAN'S LODGE": { voltage: "11kV" },
+    "TTC": { voltage: "11kV" },
+    "COT GAS": { voltage: "11kV" },
+    "OKRIKA": { voltage: "11kV" },
+    "PPMC": { voltage: "11kV" },
+    "REFINERY": { voltage: "11kV" },
+    "EBUBU": { voltage: "11kV" },
+    "OGALI": { voltage: "11kV" },
+    "OKOH ROAD": { voltage: "11kV" },
+    "OKPORO ROAD": { voltage: "11kV" },
+    "R-D ROAD": { voltage: "11kV" },
+    "OBI WALI": { voltage: "11kV" },
+    "FGC": { voltage: "11kV" },
+    "ELIOGBOLO": { voltage: "11kV" },
+    "OMACHI": { voltage: "11kV" },
+    "CIRCULAR ROAD": { voltage: "11kV" },
+    "OPOBO": { voltage: "11kV" },
+	"RSTV": { voltage: "33kV" },
+    "BORI": { voltage: "33kV" },
+    "IGBO ETCHE": { voltage: "33kV" },
+    "RUMUODUMAYA": { voltage: "33kV" }
+  },
+  "BETA-2": {
+	"network_manager": { name: "Babatunde Adeyemo-maya", phone: "+2348034785191" },
+    "ELELENWO": { voltage: "11kV" },
+    "BRISTOL": { voltage: "11kV" },
+    "TAP": { voltage: "11kV" },
+    "OLU OBASANJO": { voltage: "11kV" },
+    "ZENITH": { voltage: "11kV" },
+    "RAILWAY": { voltage: "11kV" },
+    "AFAM ROAD": { voltage: "11kV" },
+    "FIRST BANK": { voltage: "11kV" },
+    "MBANO JUNCTION": { voltage: "11kV" },
+	"ONNE": { voltage: "33kV" },
+    "NDOKI": { voltage: "33kV" },
+    "KOMKOM": { voltage: "33kV" },
+    "TIMBER": { voltage: "33kV" },
+    "OYIGBO": { voltage: "33kV" },
+    "EPCL": { voltage: "33kV" }
+  },
+  "GAMMA-1": {
+	"network_manager": { name: "Collette Ogem", phone: "+2347039426578" },
+    "UST": { voltage: "11kV" },
+    "OJOTO": { voltage: "11kV" },
+    "RUMUEME": { voltage: "11kV" },
+    "WOKOMA": { voltage: "11kV" },
+    "EAGLE ISLAND": { voltage: "11kV" },
+    "IKWERRE ROAD": { voltage: "11kV" },
+    "NSUKKA": { voltage: "11kV" },
+    "UDI": { voltage: "11kV" },
+    "NAVY": { voltage: "11kV" },
+    "HABOUR ROAD": { voltage: "11kV" },
+    "AZIKIWE": { voltage: "11kV" },
+    "ABONNEMA WHARF": { voltage: "11kV" },
+    "OWERRI ROAD": { voltage: "11kV" },
+    "AMADI SOUTH": { voltage: "11kV" },
+    "AMADI RESIDENTIAL": { voltage: "11kV" },
+    "MILE ONE": { voltage: "11kV" },
+    "OLD DIOBU": { voltage: "11kV" },
+    "OHAKWE": { voltage: "11kV" },
+    "OZUOBA": { voltage: "11kV" },
+    "MGBUOBA": { voltage: "11kV" },
+    "LOCATION ROAD": { voltage: "11kV" },
+    "BAKERY ROAD": { voltage: "11kV" },
+    "EGBELU": { voltage: "11kV" },
+    "AGIP ROAD": { voltage: "11kV" },
+    "ABACHA ROAD": { voltage: "11kV" },
+    "SCHOOL OF NURSING": { voltage: "11kV" },
+    "AKER ROAD": { voltage: "11kV" },
+    "IWOFE": { voltage: "11kV" },
+    "ELIOPARANWO": { voltage: "11kV" },
+    "KALA": { voltage: "11kV" },
+	 "UST": { voltage: "33kV" },
+    "SILVERBIRD": { voltage: "33kV" },
+    "UTC": { voltage: "33kV" },
+    "T1B": { voltage: "33kV" },
+    "NTA": { voltage: "33kV" },
+    "RUMUEPIRIKOM": { voltage: "33kV" },
+    "RUMUOLUMINI": { voltage: "33kV" }
+  },
+  "GAMMA-2": {
+	"network_manager": { name: "Kingsley Ehanire", phone: "+2348062428205" },
+    "ALUU": { voltage: "11kV" },
+    "CHOBA": { voltage: "11kV" },
+    "RUMUEKINI": { voltage: "11kV" },
+    "SARS ROAD": { voltage: "11kV" },
+    "ADP": { voltage: "11kV" },
+    "MARKET ROAD": { voltage: "11kV" },
+    "OPM": { voltage: "11kV" },
+    "SHELL ESTATE": { voltage: "11kV" },
+    "PIPE LINE": { voltage: "11kV" },
+    "AIRPORT COMPLEX": { voltage: "11kV" },
+    "IGWURUTA": { voltage: "11kV" },
+    "IGWURUTA ROAD": { voltage: "11kV" },
+    "ELIMGBU": { voltage: "11kV" },
+	"AIRPORT": { voltage: "33kV" },
+    "REFINERY LINE 1": { voltage: "33kV" },
+    "UPTH": { voltage: "33kV" },
+    "RUKPOKWU": { voltage: "33kV" },
+    "GREATER PH": { voltage: "33kV" }
+  },
+  "UYO": {
+	"network_manager": { name: "Igho Umukoro", phone: "+2348033909058" },
+    "AKA ROAD": { voltage: "11kV" },
+    "IBB AVENUE": { voltage: "11kV" },
+    "INDONGESIT NKANGA": { voltage: "11kV" },
+    "SIR UDO UDOMA": { voltage: "11kV" },
+    "UYO ROAD": { voltage: "11kV" },
+    "EDEBOM": { voltage: "11kV" },
+    "WELLINGTON BASSEY": { voltage: "11kV" },
+    "NSASAK": { voltage: "11kV" },
+    "IKPA ROAD": { voltage: "11kV" },
+    "BROOKS": { voltage: "11kV" },
+    "AKA ITIAM": { voltage: "11kV" },
+    "EWET": { voltage: "11kV" },
+    "SHELTER AFRIQUE": { voltage: "11kV" },
+    "NWANIBA": { voltage: "11kV" },
+    "OSONG AMA": { voltage: "11kV" },
+    "WING 1": { voltage: "11kV" },
+    "WING 2": { voltage: "11kV" },
+    "WING 3": { voltage: "11kV" },
+    "WING 4": { voltage: "11kV" },
+	"CHAMPIONS BREWERIES": { voltage: "33kV" },
+    "LA MERIDIAN": { voltage: "33kV" },
+    "FOURLANE": { voltage: "33kV" },
+    "IBESIKPO": { voltage: "33kV" },
+    "ORON ROAD": { voltage: "33kV" }
+  },
+  "IKOT EKPENE": {
+	"network_manager": { name: "Utibe Bassey", phone: "+2347038582068, +2348020895918" },
+    "TOWN FEEDER": { voltage: "11kV" },
+    "GRA": { voltage: "11kV" },
+    "UKANA": { voltage: "11kV" },
+    "4POINT SHERATON": { voltage: "11kV" },
+    "MBAK": { voltage: "11kV" },
+    "IDORO ROAD": { voltage: "11kV" },
+	 "OKU IBOKU": { voltage: "33kV" },
+    "ITAM": { voltage: "33kV" },
+    "ABAK": { voltage: "33kV" },
+    "IKOT EKPENE": { voltage: "33kV" },
+    "OBOT AKARA": { voltage: "33kV" },
+    "AFAHA UBE": { voltage: "33kV" }
+  },
+  "EKET": {
+	"network_manager": { name: "Promise Wiko", phone: "+2348037961410" },
+    "IKOT IBIOK": { voltage: "11kV" },
+    "OKON": { voltage: "11kV" },
+    "QUA RIVER": { voltage: "11kV" },
+    "RCC": { voltage: "11kV" },
+    "AFAHA UQUA": { voltage: "11kV" },
+    "MARITIME": { voltage: "11kV" },
+    "MARY HARNEY": { voltage: "11kV" },
+    "IKOT AKAN": { voltage: "11kV" },
+    "ALSCON": { voltage: "11kV" },
+    "IBEKWE": { voltage: "11kV" },
+    "PORT HARCOURT ROAD": { voltage: "11kV" },
+    "ETE URBAN": { voltage: "11kV" },
+	"EKET": { voltage: "33kV" },
+    "ETINAN": { voltage: "33kV" },
+    "EKPENUKPA": { voltage: "33kV" },
+    "MBO": { voltage: "33kV" },
+    "IBENO": { voltage: "33kV" },
+    "INDUSTRIAL": { voltage: "33kV" },
+    "IKOT ABASI": { voltage: "33kV" },
+    "EKIM": { voltage: "33kV" }
+  },
+	   "AHOADA": {
+    "network_manager": { name: "Victor Esu", phone: "+2348030947536" },
+    "ABONEMA": { voltage: "33kV" },
+    "BUGUMA": { voltage: "33kV" },
+    "ISIOKPO": { voltage: "33kV" },
+    "AHOADA": { voltage: "33kV" },
+    "EMOHUA": { voltage: "33kV" }
+  },
+};
+   // Function to populate datalist with feeder names
+    function populateSuggestions() {
+      const datalist = document.getElementById("feederSuggestions");
+      datalist.innerHTML = "";
+		
+      // Iterate through each region and add feeder names
+      Object.entries(feeders).forEach(([region, feederList]) => {
+        Object.keys(feederList).forEach(feeder => {
+          const option = document.createElement("option");
+          option.value = feeder;
+          datalist.appendChild(option);
+        });
+      });
+    }
+
+   // Function to get feeder info
+function getFeederInfo() {
+  const feederName = document.getElementById("feederInput").value.toUpperCase();
+  const resultDiv = document.getElementById("result");
+  let found = false;
+
+  // Iterate through each region
+  for (const [region, feederList] of Object.entries(feeders)) {
+    if (feederList[feederName]) {
+      const voltage = feederList[feederName].voltage;
+      const article = voltage === "11kV" ? "an" : "a";
+
+      // Get network manager details
+      const manager = feederList["network_manager"];
+      const managerName = manager ? manager.name : "N/A";
+      const managerPhone = manager ? manager.phone : "N/A";
+
+      resultDiv.innerHTML = `
+        <strong>${feederName}</strong> is ${article} <strong>${voltage}</strong> feeder in <strong>${region}</strong> region.<br><br>
+        <strong>Network Manager:</strong> ${managerName} <br>
+        <strong>Phone:</strong> ${managerPhone}
+      `;
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    resultDiv.innerHTML = `Feeder <strong>${feederName}</strong> not found in the database.`;
+  }
+}
+
+    // Populate suggestions when the page loads
+    populateSuggestions();
+  </script>
+
+</body>
+</html>
