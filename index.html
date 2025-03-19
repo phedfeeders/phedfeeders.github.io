@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feeder Region Finder</title>
+  <title>PHED Feeder-Region Finder</title>
   <style>
 	  
 	  body {
@@ -37,7 +37,7 @@
     }
 */
     h2 {
-      color: #333;
+      color: purple;
     }
     input {
       padding: 10px;
@@ -66,15 +66,16 @@
         font-size: 14px; /* Slightly smaller font for mobile */
         padding: 12px; /* More padding for better touch experience */
     }
- #result {
+    #result {
       font-size: 14px;
     }
 }
   </style>
 </head>
 <body style="background-color: aliceblue">
+	
 <div class="container">
-        <h2>PHED Feeder-Region Finder</h2>
+       <h2>PHED Feeder-Region Finder</h2>
         <div class="input-group">
             <input type="text" id="feederInput" placeholder="Enter feeder name (e.g., Amika)" list="feederSuggestions">
             <button onclick="getFeederInfo()">Find</button>
@@ -387,13 +388,16 @@
       datalist.innerHTML = "";
 		
       // Iterate through each region and add feeder names
-      Object.entries(feeders).forEach(([region, feederList]) => {
-        Object.keys(feederList).forEach(feeder => {
-          const option = document.createElement("option");
-          option.value = feeder;
-          datalist.appendChild(option);
-        });
-      });
+  Object.entries(feeders).forEach(([region, feederList]) => {
+    Object.keys(feederList).forEach(feeder => {
+      // Exclude "network_manager"
+      if (feeder !== "network_manager") {
+        const option = document.createElement("option");
+        option.value = feeder;
+        datalist.appendChild(option);
+      }
+    });
+  });
     }
 
    // Function to get feeder info
