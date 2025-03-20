@@ -401,9 +401,8 @@
   });
     }
 
-   // Function to get feeder info
-function getFeederInfo() {
-  const feederName = document.getElementById("feederInput").value.toUpperCase();
+     function getFeederInfo() {
+  const feederName = document.getElementById("feederInput").value.trim().toUpperCase(); // Trim spaces
   const resultDiv = document.getElementById("result");
   let found = false;
 
@@ -411,7 +410,6 @@ function getFeederInfo() {
   for (const [region, feederList] of Object.entries(feeders)) {
     if (feederList[feederName]) {
       const voltage = feederList[feederName].voltage;
-      
 
       // Get network manager details
       const manager = feederList["network_manager"];
@@ -420,7 +418,7 @@ function getFeederInfo() {
 
       resultDiv.innerHTML = `
         <strong>${feederName}</strong>  <strong>${voltage}</strong> feeder is in <strong>${region}</strong> region.<br><br>
-        <strong>Network Manager:</strong> ${managerName} <br>
+        <strong> Network Manager:</strong> ${managerName} <br>
         <strong>Phone:</strong> ${managerPhone}
       `;
       found = true;
@@ -432,7 +430,6 @@ function getFeederInfo() {
     resultDiv.innerHTML = `Feeder <strong>${feederName}</strong> not found in the database.`;
   }
 }
-
     // Populate suggestions when the page loads
     populateSuggestions();
   </script>
