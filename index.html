@@ -87,7 +87,7 @@
         <div id="result"></div>
     </div>
 
- <script>
+  <script>
   const feeders = {
 	  "ALPHA-1": {
         "network_manager": { name: "Brume Adogbeji", phone: "+2348075819443" },
@@ -413,34 +413,40 @@
 
     // Iterate through each region
     for (const [region, feederList] of Object.entries(feeders)) {
-      if (feederList[feederName]) {
-        const voltage = feederList[feederName].voltage;
-        const maxLoad = feederList[feederName].max_load !== null ? feederList[feederName].max_load : "N/A";
-        const avLoad = feederList[feederName].av_load !== null ? feederList[feederName].av_load : "N/A";
+        if (feederList[feederName]) {
+            const voltage = feederList[feederName].voltage;
+            const maxLoad = feederList[feederName].max_load !== null ? `${feederList[feederName].max_load} MW` : "Null";
+            const avLoad = feederList[feederName].av_load !== null ? `${feederList[feederName].av_load} MW` : "Null";
 
-        // Get network manager details
-        const manager = feederList["network_manager"];
-        const managerName = manager ? manager.name : "N/A";
-        const managerPhone = manager ? manager.phone : "N/A";
+            // Get network manager details
+            const manager = feederList["network_manager"];
+            const managerName = manager ? manager.name : "N/A";
+            const managerPhone = manager ? manager.phone : "N/A";
 
-        resultDiv.innerHTML = `
-          <strong>${feederName}</strong>  <strong>${voltage}</strong> feeder is in <strong>${region}</strong> region.<br><br>
-          <div style="display:flex;justify-content:center; align-content:center"><div style="background:red; width:40%; padding:5px; color:#fff; margin-right:20px"><strong>Max Load:</strong> ${maxLoad} MW</div>
-          <div style="background:green; width:40%; padding:5px; color:#fff;float:right"><strong>Av. Load:</strong> ${avLoad} MW</div></div><br>
-          <strong>Network Manager: <span style="color:green">${managerName}, ${managerPhone} </span></strong>
-        `;
-        found = true;
-        break;
-      }
+            resultDiv.innerHTML = `
+                <strong>${feederName}</strong> <strong>${voltage}</strong> feeder is in <strong>${region}</strong> region.<br><br>
+                <div class="load" style="display:flex; justify-content:center; align-items:center;">
+                    <div style="background:red; width:40%; padding:5px; color:#fff; margin-right:20px;">
+                        <strong>Max Load:</strong> ${maxLoad}
+                    </div>
+                    <div style="background:green; width:40%; padding:5px; color:#fff;">
+                        <strong>Average Load:</strong> ${avLoad}
+                    </div>
+                </div><br>
+                <strong>Network Manager: <span style="color:green">${managerName}, ${managerPhone}</span></strong>
+            `;
+            found = true;
+            break;
+        }
     }
 
     if (!found) {
-      resultDiv.innerHTML = `Feeder <strong>${feederName}</strong> not found in the database.`;
+        resultDiv.innerHTML = `Feeder <strong>${feederName}</strong> not found in the database.`;
     }
-  }
+}
 
-  // Populate suggestions when the page loads
-  populateSuggestions();
+// Populate suggestions when the page loads
+populateSuggestions();
 </script>
 	
 <footer style="position: absolute; bottom:10px; text-align: center; font-size: 12px; color:purple;">
