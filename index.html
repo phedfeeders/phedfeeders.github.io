@@ -84,356 +84,363 @@
         <div id="result"></div>
     </div>
 
-  <script>
-   const feeders = {
-    "ALPHA-1": {
-	"network_manager": { name: "Brume Adogbeji", phone: "+2348075819443" },
-    "SHELL INDUSTRIAL": { voltage: "11kV" },
-    "BARRACKS": { voltage: "11kV" },
-    "RUMUOMOI": { voltage: "11kV" },
-    "WATER LINES": { voltage: "11kV" },
-    "BORI CAMP": { voltage: "11kV" },
-    "RUMUOKWUTA": { voltage: "11kV" },
-    "OMERELU": { voltage: "11kV" },
-    "NEW GRA": { voltage: "11kV" },
-    "ELEKAHIA ESTATE": { voltage: "11kV" },
-    "ELEKAHIA VILLAGE": { voltage: "11kV" },
-    "NIGER CAT": { voltage: "11kV" },
-    "NKPOGU": { voltage: "11kV" },
-    "AMADI AMA": { voltage: "11kV" },
-    "RUMUKALAGBO": { voltage: "11kV" },
-    "OLD ABA ROAD": { voltage: "11kV" },
-    "RUMUOGBA": { voltage: "11kV" },
-    "RUMUOROLU": { voltage: "11kV" },
-    "RUMUIBEKWE": { voltage: "11kV" },
-    "RIVOC": { voltage: "11kV" },
-    "NDABROS": { voltage: "11kV" },
-    "WATER WORKS": { voltage: "11kV" },
-    "FIMIE": { voltage: "11kV" },
-	"INDUSTRIAL(T/A)": { voltage: "33kV" },
-    "STADIUM(T/A)": { voltage: "33kV" },
-    "ORDINANCE": { voltage: "33kV" },
-    "RUMUOLA": { voltage: "33kV" },
-    "REFINERY LINE 2": { voltage: "33kV" },
-    "RAINBOW": { voltage: "33kV" },
-    "AKANI": { voltage: "33kV" },
-    "TRANS AMADI": { voltage: "33kV" }
-  },
-  "ALPHA-2": {
-	"network_manager": { name: "Magnus Uchechukwu", phone: "+2348068778860" },
-    "JETTY": { voltage: "11kV" },
-    "OZUBOKO": { voltage: "11kV" },
-    "ODILI ROAD": { voltage: "11kV" },
-    "OKURU": { voltage: "11kV" },
-    "GULF ESTATE": { voltage: "11kV" },
-    "AZUABIE": { voltage: "11kV" },
-    "GLASS FACTORY": { voltage: "11kV" },
-    "NVUIGWE": { voltage: "11kV" },
-    "OGBATAI": { voltage: "11kV" },
-    "NPA": { voltage: "11kV" },
-    "CHURCHILL": { voltage: "11kV" },
-    "STATION ROAD": { voltage: "11kV" },
-    "AMADI NORTH": { voltage: "11kV" },
-    "HAROLD WILSON": { voltage: "11kV" },
-    "NEW ROAD": { voltage: "11kV" },
-    "MARINE BASE": { voltage: "11kV" },
-    "EASTERN BYPASS": { voltage: "11kV" },
-	 "NLNG": { voltage: "33kV" },
-    "ABULOMA": { voltage: "33kV" },
-    "RSPUB 1": { voltage: "33kV" },
-    "SECRETARIAT": { voltage: "33kV" },
-    "BOROKIRI": { voltage: "33kV" }
-  },
-  "BAYELSA": {
-	"network_manager": { name: "Victor Esu", phone: "+2348030947536" },
-    "LOCAL GOVERNMENT": { voltage: "11kV" },
-    "NDU": { voltage: "11kV" },
-    "AMASOMA II": { voltage: "11kV" },
-    "OFONI": { voltage: "11kV" },
-    "SAGBAMA": { voltage: "11kV" },
-    "POLAKU": { voltage: "11kV" },
-    "AGBIA": { voltage: "11kV" },
-    "OKOTIAMA": { voltage: "11kV" },
-    "KOLOBIRI": { voltage: "11kV" },
-    "IMIRINGI": { voltage: "33kV" },
-    "AGUDAMA": { voltage: "33kV" },
-    "OPOLO": { voltage: "33kV" },
-    "AMASOMA": { voltage: "33kV" },
-    "TUNGBO": { voltage: "33kV" },
-    "GOVT HOUSE": { voltage: "33kV" },
-    "GBARAIN": { voltage: "33kV" }
-  },
-  "CALABAR": {
-	"network_manager": { name: "Tom Udofia", phone: "+2348065957260" },
-    "8 MILES": { voltage: "11kV" },
-    "ESUK UTAN": { voltage: "11kV" },
-    "FEDERAL HOUSING": { voltage: "11kV" },
-    "INDUSTRIAL": { voltage: "11kV" },
-    "ESSIEN TOWN": { voltage: "11kV" },
-    "MCC": { voltage: "11kV" },
-    "LEOPARD": { voltage: "11kV" },
-    "ESSIEN I /MARIANA": { voltage: "11kV" },
-    "CAMEROUN": { voltage: "11kV" },
-    "UNICAL": { voltage: "11kV" },
-    "GOLDIE": { voltage: "11kV" },
-    "TARGET": { voltage: "11kV" },
-    "CRUTECH": { voltage: "11kV" },
-    "ANANTIGHA": { voltage: "11kV" },
-    "IKOT ENEOBONG": { voltage: "11kV" },
-    "BACOCO": { voltage: "11kV" },
-	"BAO YAO": { voltage: "33kV" },
-    "AKAMKPA": { voltage: "33kV" },
-    "EPZ1": { voltage: "33kV" },
-    "EPZ2": { voltage: "33kV" },
-    "WATERBOARD": { voltage: "33kV" },
-    "OLAM": { voltage: "33kV" },
-    "FLOUR MILL": { voltage: "33kV" },
-    "NIGER MILLS": { voltage: "33kV" },
-    "DIAMOND HILLS": { voltage: "33kV" },
-    "STATE HOUSING": { voltage: "33kV" },
-    "AMIKA": { voltage: "33kV" },
-    "ADIABO": { voltage: "33kV" },
-    "TRANSCORP": { voltage: "33kV" }
-  },
-  "OGOJA": {
-	"network_manager": { name: "Tom Udofia", phone: "+2348065957260" },
-    "IKOM TOWN": { voltage: "11kV" },
-    "FOUR CORNER": { voltage: "11kV" },
-	"ITIGIDI": { voltage: "33kV" },
-    "YAHE": { voltage: "33kV" },
-    "KATSINA ALA": { voltage: "33kV" }
-  },
+ <script>
+  const feeders = {
+	  "ALPHA-1": {
+        "network_manager": { name: "Brume Adogbeji", phone: "+2348075819443" },
+        "INDUSTRIAL(T/A)": { voltage: "33kV", max_load: null, av_load: null },
+        "STADIUM(T/A)": { voltage: "33kV", max_load: null, av_load: null },
+        "ORDINANCE": { voltage: "33kV", max_load: 18.10, av_load: 10.33 },
+        "RUMUOLA": { voltage: "33kV", max_load: 15.80, av_load: 9.85 },
+        "REFINERY LINE 2": { voltage: "33kV", max_load: 21.15, av_load: 13.82 },
+        "RAINBOW": { voltage: "33kV", max_load: 14.65, av_load: 9.39 },
+        "AKANI": { voltage: "33kV", max_load: 14.85, av_load: 10.16 },
+        "TRANS AMADI": { voltage: "33kV", max_load: 15.90, av_load: 4.25 },
+        "SHELL INDUSTRIAL": { voltage: "11kV", max_load: 6.00, av_load: 3.36 },
+        "BARRACKS": { voltage: "11kV", max_load: 5.80, av_load: 4.21 },
+        "RUMUOMOI": { voltage: "11kV", max_load: 3.78, av_load: 2.75 },
+        "WATER LINES": { voltage: "11kV", max_load: 6.30, av_load: 4.50 },
+        "BORI CAMP": { voltage: "11kV", max_load: 5.40, av_load: 4.03 },
+        "RUMUOKWUTA": { voltage: "11kV", max_load: 5.80, av_load: 3.95 },
+        "OMERELU": { voltage: "11kV", max_load: 4.90, av_load: 3.68 },
+        "NEW GRA": { voltage: "11kV", max_load: 2.52, av_load: 1.83 },
+        "ELEKAHIA ESTATE": { voltage: "11kV", max_load: 4.00, av_load: 2.93 },
+        "ELEKAHIA VILLAGE": { voltage: "11kV", max_load: 3.20, av_load: 1.98 },
+        "NIGER CAT": { voltage: "11kV", max_load: 2.30, av_load: 1.55 },
+        "NKPOGU": { voltage: "11kV", max_load: 1.10, av_load: 0.78 },
+        "AMADI AMA": { voltage: "11kV", max_load: 2.80, av_load: 2.13 },
+        "RUMUKALAGBO": { voltage: "11kV", max_load: 4.50, av_load: 3.31 },
+        "OLD ABA ROAD": { voltage: "11kV", max_load: 5.40, av_load: 3.53 },
+        "RUMUOGBA": { voltage: "11kV", max_load: 3.60, av_load: 2.04 },
+        "RUMUOROLU": { voltage: "11kV", max_load: 4.00, av_load: 2.31 },
+        "RUMUIBEKWE": { voltage: "11kV", max_load: 4.20, av_load: 2.31 },
+        "RIVOC": { voltage: "11kV", max_load: 5.90, av_load: 4.19 },
+        "NDABROS": { voltage: "11kV", max_load: 2.00, av_load: 1.07 },
+        "WATER WORKS": { voltage: "11kV", max_load: 4.80, av_load: 2.67 },
+        "FIMIE": { voltage: "11kV", max_load: 2.40, av_load: 1.69 },
+      },
+      "ALPHA-2": {
+        "network_manager": { name: "Magnus Uchechukwu", phone: "+2348068778860" },
+        "NLNG": { voltage: "33kV", max_load: 2.97, av_load: 2.13 },
+        "ABULOMA": { voltage: "33kV", max_load: 13.20, av_load: 7.88 },
+        "RSPUB 1": { voltage: "33kV", max_load: 14.70, av_load: 7.95 },
+        "SECRETARIAT": { voltage: "33kV", max_load: 11.28, av_load: 4.91 },
+        "BOROKIRI": { voltage: "33kV", max_load: 10.20, av_load: 4.42 },
+        "JETTY": { voltage: "11kV", max_load: 3.40, av_load: 2.50 },
+        "OZUBOKO": { voltage: "11kV", max_load: 3.20, av_load: 2.26 },
+        "ODILI ROAD": { voltage: "11kV", max_load: null, av_load: null },
+        "OKURU": { voltage: "11kV", max_load: 1.80, av_load: 0.90 },
+        "GULF ESTATE": { voltage: "11kV", max_load: null, av_load: null },
+        "AZUABIE": { voltage: "11kV", max_load: 2.10, av_load: 1.55 },
+        "GLASS FACTORY": { voltage: "11kV", max_load: 2.60, av_load: 1.82 },
+        "NVUIGWE": { voltage: "11kV", max_load: 6.20, av_load: 4.46 },
+        "OGBATAI": { voltage: "11kV", max_load: 4.50, av_load: 3.34 },
+        "NPA": { voltage: "11kV", max_load: 3.30, av_load: 1.30 },
+        "CHURCHILL": { voltage: "11kV", max_load: 3.50, av_load: 2.61 },
+        "STATION ROAD": { voltage: "11kV", max_load: 4.30, av_load: 3.00 },
+        "AMADI NORTH": { voltage: "11kV", max_load: 3.90, av_load: 2.90 },
+        "HAROLD WILSON": { voltage: "11kV", max_load: 5.20, av_load: 4.06 },
+        "NEW ROAD": { voltage: "11kV", max_load: 2.50, av_load: 1.85 },
+        "MARINE BASE": { voltage: "11kV", max_load: 2.80, av_load: 1.97 },
+        "EASTERN BYPASS": { voltage: "11kV", max_load: 0.10, av_load: 0.10 },
+      },
 
   "BETA-1": {
-	"network_manager": { name: "Kenechukwu Igboamalu", phone: "+2348035523086" },
-    "AKPAJO": { voltage: "11kV" },
-    "PALACE ROAD": { voltage: "11kV" },
-    "CHAIRMAN'S LODGE": { voltage: "11kV" },
-    "TTC": { voltage: "11kV" },
-    "COT GAS": { voltage: "11kV" },
-    "OKRIKA": { voltage: "11kV" },
-    "PPMC": { voltage: "11kV" },
-    "REFINERY": { voltage: "11kV" },
-    "EBUBU": { voltage: "11kV" },
-    "OGALI": { voltage: "11kV" },
-    "OKOH ROAD": { voltage: "11kV" },
-    "OKPORO ROAD": { voltage: "11kV" },
-    "R-D ROAD": { voltage: "11kV" },
-    "OBI WALI": { voltage: "11kV" },
-    "FGC": { voltage: "11kV" },
-    "ELIOGBOLO": { voltage: "11kV" },
-    "OMACHI": { voltage: "11kV" },
-    "CIRCULAR ROAD": { voltage: "11kV" },
-    "OPOBO": { voltage: "11kV" },
-	"RSTV": { voltage: "33kV" },
-    "BORI": { voltage: "33kV" },
-    "IGBO ETCHE": { voltage: "33kV" },
-    "RUMUODUMAYA": { voltage: "33kV" }
+    "network_manager": { name: "Kenechukwu Igboamalu", phone: "+2348035523086" },
+    "RSTV": { voltage: "33kV", max_load: 11.10, av_load: 6.06 },
+    "BORI": { voltage: "33kV", max_load: 15.10, av_load: 6.80 },
+    "IGBO ETCHE": { voltage: "33kV", max_load: 12.50, av_load: 3.71 },
+    "RUMUODUMAYA": { voltage: "33kV", max_load: 21.75, av_load: 15.76 },
+    "AKPAJO": { voltage: "11kV", max_load: 4.70, av_load: 2.44 },
+    "PALACE ROAD": { voltage: "11kV", max_load: 6.50, av_load: 4.65 },
+    "CHAIRMAN'S LODGE": { voltage: "11kV", max_load: null, av_load: null },
+    "TTC": { voltage: "11kV", max_load: null, av_load: null },
+    "COT GAS": { voltage: "11kV", max_load: 4.70, av_load: 3.51 },
+    "OKRIKA": { voltage: "11kV", max_load: 6.30, av_load: 4.48 },
+    "PPMC": { voltage: "11kV", max_load: null, av_load: null },
+    "REFINERY": { voltage: "11kV", max_load: null, av_load: null },
+    "EBUBU": { voltage: "11kV", max_load: null, av_load: null },
+    "OGALI": { voltage: "11kV", max_load: null, av_load: null },
+    "OKOH ROAD": { voltage: "11kV", max_load: 1.40, av_load: 0.99 },
+    "OKPORO ROAD": { voltage: "11kV", max_load: 4.80, av_load: 3.74 },
+    "R-D ROAD": { voltage: "11kV", max_load: 5.20, av_load: 3.58 },
+    "OBI WALI": { voltage: "11kV", max_load: 4.30, av_load: 2.83 },
+    "FGC": { voltage: "11kV", max_load: 5.10, av_load: 3.81 },
+    "ELIOGBOLO": { voltage: "11kV", max_load: 3.30, av_load: 2.04 },
+    "OMACHI": { voltage: "11kV", max_load: 4.20, av_load: 3.04 },
+    "CIRCULAR ROAD": { voltage: "11kV", max_load: 2.00, av_load: 1.33 },
+    "OPOBO": { voltage: "11kV", max_load: 0.20, av_load: 0.11 },
   },
   "BETA-2": {
-	"network_manager": { name: "Babatunde Adeyemo-maya", phone: "+2348034785191" },
-    "ELELENWO": { voltage: "11kV" },
-    "BRISTOL": { voltage: "11kV" },
-    "TAP": { voltage: "11kV" },
-    "OLU OBASANJO": { voltage: "11kV" },
-    "ZENITH": { voltage: "11kV" },
-    "RAILWAY": { voltage: "11kV" },
-    "AFAM ROAD": { voltage: "11kV" },
-    "FIRST BANK": { voltage: "11kV" },
-    "MBANO JUNCTION": { voltage: "11kV" },
-	"ONNE": { voltage: "33kV" },
-    "NDOKI": { voltage: "33kV" },
-    "KOMKOM": { voltage: "33kV" },
-    "TIMBER": { voltage: "33kV" },
-    "OYIGBO": { voltage: "33kV" },
-    "EPCL": { voltage: "33kV" }
+    "network_manager": { name: "Babatunde Adeyemo-maya", phone: "+2348034785191" },
+    "ONNE": { voltage: "33kV", max_load: 11.20, av_load: 5.19 },
+    "NDOKI": { voltage: "33kV", max_load: 5.90, av_load: 3.83 },
+    "KOMKOM": { voltage: "33kV", max_load: 21.80, av_load: 11.98 },
+    "TIMBER": { voltage: "33kV", max_load: 8.40, av_load: 5.24 },
+    "OYIGBO": { voltage: "33kV", max_load: 9.70, av_load: 6.78 },
+    "EPCL": { voltage: "33kV", max_load: 0.20, av_load: 0.20 },
+    "ELELENWO": { voltage: "11kV", max_load: 2.90, av_load: 2.09 },
+    "BRISTOL": { voltage: "11kV", max_load: 3.30, av_load: 2.44 },
+    "TAP": { voltage: "11kV", max_load: 4.00, av_load: 3.08 },
+    "OLU OBASANJO": { voltage: "11kV", max_load: null, av_load: null },
+    "ZENITH": { voltage: "11kV", max_load: 3.10, av_load: 2.08 },
+    "RAILWAY": { voltage: "11kV", max_load: 2.90, av_load: 1.85 },
+    "AFAM ROAD": { voltage: "11kV", max_load: 3.50, av_load: 1.92 },
+    "FIRST BANK": { voltage: "11kV", max_load: 3.20, av_load: 2.30 },
+    "MBANO JUNCTION": { voltage: "11kV", max_load: 5.10, av_load: 3.67 },
   },
   "GAMMA-1": {
-	"network_manager": { name: "Collette Ogem", phone: "+2347039426578" },
-    "UST": { voltage: "11kV" },
-    "OJOTO": { voltage: "11kV" },
-    "RUMUEME": { voltage: "11kV" },
-    "WOKOMA": { voltage: "11kV" },
-    "EAGLE ISLAND": { voltage: "11kV" },
-    "IKWERRE ROAD": { voltage: "11kV" },
-    "NSUKKA": { voltage: "11kV" },
-    "UDI": { voltage: "11kV" },
-    "NAVY": { voltage: "11kV" },
-    "HABOUR ROAD": { voltage: "11kV" },
-    "AZIKIWE": { voltage: "11kV" },
-    "ABONNEMA WHARF": { voltage: "11kV" },
-    "OWERRI ROAD": { voltage: "11kV" },
-    "AMADI SOUTH": { voltage: "11kV" },
-    "AMADI RESIDENTIAL": { voltage: "11kV" },
-    "MILE ONE": { voltage: "11kV" },
-    "OLD DIOBU": { voltage: "11kV" },
-    "OHAKWE": { voltage: "11kV" },
-    "OZUOBA": { voltage: "11kV" },
-    "MGBUOBA": { voltage: "11kV" },
-    "LOCATION ROAD": { voltage: "11kV" },
-    "BAKERY ROAD": { voltage: "11kV" },
-    "EGBELU": { voltage: "11kV" },
-    "AGIP ROAD": { voltage: "11kV" },
-    "ABACHA ROAD": { voltage: "11kV" },
-    "SCHOOL OF NURSING": { voltage: "11kV" },
-    "AKER ROAD": { voltage: "11kV" },
-    "IWOFE": { voltage: "11kV" },
-    "ELIOPARANWO": { voltage: "11kV" },
-    "KALA": { voltage: "11kV" },
-	 "UST": { voltage: "33kV" },
-    "SILVERBIRD": { voltage: "33kV" },
-    "UTC": { voltage: "33kV" },
-    "T1B": { voltage: "33kV" },
-    "NTA": { voltage: "33kV" },
-    "RUMUEPIRIKOM": { voltage: "33kV" },
-    "RUMUOLUMINI": { voltage: "33kV" }
+    "network_manager": { name: "Collette Ogem", phone: "+2347039426578" },
+    "UST": { voltage: "33kV", max_load: 13.28, av_load: 6.76 },
+    "SILVERBIRD": { voltage: "33kV", max_load: 12.00, av_load: 3.67 },
+    "UTC": { voltage: "33kV", max_load: 9.90, av_load: 3.93 },
+    "T1B": { voltage: "33kV", max_load: 16.20, av_load: 7.53 },
+    "NTA": { voltage: "33kV", max_load: 17.40, av_load: 11.32 },
+    "RUMUEPIRIKOM": { voltage: "33kV", max_load: 15.20, av_load: 7.87 },
+    "RUMUOLUMINI": { voltage: "33kV", max_load: 17.15, av_load: 8.36 },
+    "UST": { voltage: "11kV", max_load: 0.10, av_load: 0.10 },
+    "OJOTO": { voltage: "11kV", max_load: null, av_load: null },
+    "RUMUEME": { voltage: "11kV", max_load: 3.80, av_load: 2.75 },
+    "WOKOMA": { voltage: "11kV", max_load: 3.70, av_load: 2.50 },
+    "EAGLE ISLAND": { voltage: "11kV", max_load: 3.40, av_load: 2.40 },
+    "IKWERRE ROAD": { voltage: "11kV", max_load: null, av_load: null },
+    "NSUKKA": { voltage: "11kV", max_load: 6.90, av_load: 4.83 },
+    "UDI": { voltage: "11kV", max_load: 4.80, av_load: 3.53 },
+    "NAVY": { voltage: "11kV", max_load: 2.40, av_load: 1.79 },
+    "HABOUR ROAD": { voltage: "11kV", max_load: 2.90, av_load: 2.29 },
+    "AZIKIWE": { voltage: "11kV", max_load: 2.00, av_load: 1.35 },
+    "ABONNEMA WHARF": { voltage: "11kV", max_load: 0.10, av_load: 0.10 },
+    "OWERRI ROAD": { voltage: "11kV", max_load: 6.20, av_load: 4.58 },
+    "AMADI SOUTH": { voltage: "11kV", max_load: 2.80, av_load: 2.11 },
+    "AMADI RESIDENTIAL": { voltage: "11kV", max_load: 5.00, av_load: 3.87 },
+    "MILE ONE": { voltage: "11kV", max_load: null, av_load: null },
+    "OLD DIOBU": { voltage: "11kV", max_load: 5.20, av_load: 3.74 },
+    "OHAKWE": { voltage: "11kV", max_load: 1.90, av_load: 1.24 },
+    "OZUOBA": { voltage: "11kV", max_load: 5.80, av_load: 4.20 },
+    "MGBUOBA": { voltage: "11kV", max_load: 3.70, av_load: 2.48 },
+    "LOCATION ROAD": { voltage: "11kV", max_load: 4.80, av_load: 3.25 },
+    "BAKERY ROAD": { voltage: "11kV", max_load: 2.30, av_load: 0.53 },
+    "EGBELU": { voltage: "11kV", max_load: 5.80, av_load: 4.14 },
+    "AGIP ROAD": { voltage: "11kV", max_load: null, av_load: null },
+    "ABACHA ROAD": { voltage: "11kV", max_load: 0.30, av_load: 0.23 },
+    "SCHOOL OF NURSING": { voltage: "11kV", max_load: 6.60, av_load: 4.63 },
+    "AKER ROAD": { voltage: "11kV", max_load: 5.50, av_load: 4.45 },
+    "IWOFE": { voltage: "11kV", max_load: null, av_load: null },
+    "ELIOPARANWO": { voltage: "11kV", max_load: 5.20, av_load: 3.98 },
+    "KALA": { voltage: "11kV", max_load: 4.40, av_load: 2.80 },
   },
   "GAMMA-2": {
-	"network_manager": { name: "Kingsley Ehanire", phone: "+2348062428205" },
-    "ALUU": { voltage: "11kV" },
-    "CHOBA": { voltage: "11kV" },
-    "RUMUEKINI": { voltage: "11kV" },
-    "SARS ROAD": { voltage: "11kV" },
-    "ADP": { voltage: "11kV" },
-    "MARKET ROAD": { voltage: "11kV" },
-    "OPM": { voltage: "11kV" },
-    "SHELL ESTATE": { voltage: "11kV" },
-    "PIPE LINE": { voltage: "11kV" },
-    "AIRPORT COMPLEX": { voltage: "11kV" },
-    "IGWURUTA": { voltage: "11kV" },
-    "IGWURUTA ROAD": { voltage: "11kV" },
-    "ELIMGBU": { voltage: "11kV" },
-	"AIRPORT": { voltage: "33kV" },
-    "REFINERY LINE 1": { voltage: "33kV" },
-    "UPTH": { voltage: "33kV" },
-    "RUKPOKWU": { voltage: "33kV" },
-    "GREATER PH": { voltage: "33kV" }
+    "network_manager": { name: "Kingsley Ehanire", phone: "+2348062428205" },
+    "AIRPORT": { voltage: "33kV", max_load: 19.30, av_load: 11.71 },
+    "REFINERY LINE 1": { voltage: "33kV", max_load: 14.50, av_load: 7.67 },
+    "UPTH": { voltage: "33kV", max_load: 17.80, av_load: 12.27 },
+    "RUKPOKWU": { voltage: "33kV", max_load: 17.40, av_load: 10.95 },
+    "GREATER PH": { voltage: "33kV", max_load: 13.10, av_load: 6.69 },
+    "ALUU": { voltage: "11kV", max_load: 6.30, av_load: 4.70 },
+    "CHOBA": { voltage: "11kV", max_load: 3.10, av_load: 2.11 },
+    "RUMUEKINI": { voltage: "11kV", max_load: 2.00, av_load: 1.32 },
+    "SARS ROAD": { voltage: "11kV", max_load: 5.20, av_load: 3.52 },
+    "ADP": { voltage: "11kV", max_load: 5.50, av_load: 3.91 },
+    "MARKET ROAD": { voltage: "11kV", max_load: 5.60, av_load: 3.83 },
+    "OPM": { voltage: "11kV", max_load: 5.60, av_load: 3.69 },
+    "SHELL ESTATE": { voltage: "11kV", max_load: 0.70, av_load: 0.44 },
+    "PIPE LINE": { voltage: "11kV", max_load: 3.30, av_load: 1.98 },
+    "AIRPORT COMPLEX": { voltage: "11kV", max_load: 2.30, av_load: 0.92 },
+    "IGWURUTA": { voltage: "11kV", max_load: null, av_load: null },
+    "IGWURUTA ROAD": { voltage: "11kV", max_load: 6.70, av_load: 4.90 },
+    "ELIMGBU": { voltage: "11kV", max_load: 6.70, av_load: 5.28 },
   },
+      "BAYELSA": {
+        "network_manager": { name: "Victor Esu", phone: "+2348030947536" },
+        "IMIRINGI": { voltage: "33kV", max_load: 12.30, av_load: 6.54 },
+        "AGUDAMA": { voltage: "33kV", max_load: 11.50, av_load: 7.56 },
+        "OPOLO": { voltage: "33kV", max_load: 9.90, av_load: 7.27 },
+        "AMASOMA": { voltage: "33kV", max_load: 4.80, av_load: 1.95 },
+        "TUNGBO": { voltage: "33kV", max_load: 5.60, av_load: 2.35 },
+        "GOVT HOUSE": { voltage: "33kV", max_load: 6.10, av_load: 3.91 },
+        "GBARAIN": { voltage: "33kV", max_load: 1.60, av_load: 0.48 },
+        "LOCAL GOVERNMENT": { voltage: "11kV", max_load: 1.10, av_load: 0.85 },
+        "NDU": { voltage: "11kV", max_load: 0.20, av_load: 0.11 },
+        "AMASOMA II": { voltage: "11kV", max_load: 0.70, av_load: 0.56 },
+        "OFONI": { voltage: "11kV", max_load: 1.30, av_load: 1.03 },
+        "SAGBAMA": { voltage: "11kV", max_load: 1.30, av_load: 1.05 },
+        "POLAKU": { voltage: "11kV", max_load: 3.40, av_load: 1.45 },
+        "AGBIA": { voltage: "11kV", max_load: 3.40, av_load: 1.82 },
+        "OKOTIAMA": { voltage: "11kV", max_load: 2.00, av_load: 1.07 },
+        "KOLOBIRI": { voltage: "11kV", max_load: 1.50, av_load: 0.75 },
+      },
+      "AHOADA": {
+        "network_manager": { name: "Victor Esu", phone: "+2348030947536" },
+        "ABONEMA": { voltage: "33kV", max_load: 1.70, av_load: 1.21 },
+        "BUGUMA": { voltage: "33kV", max_load: 2.70, av_load: 2.00 },
+        "ISIOKPO": { voltage: "33kV", max_load: null, av_load: null },
+        "AHOADA": { voltage: "33kV", max_load: 7.00, av_load: 4.68 },
+        "EMOHUA": { voltage: "33kV", max_load: 3.50, av_load: 2.48 },
+      },
+      "CALABAR": {
+        "network_manager": { name: "Tom Udofia", phone: "+2348065957260" },
+        "BAO YAO": { voltage: "33kV", max_load: 8.10, av_load: 2.60 },
+        "AKAMKPA": { voltage: "33kV", max_load: 4.90, av_load: 2.72 },
+        "EPZ1": { voltage: "33kV", max_load: 6.00, av_load: 2.54 },
+        "EPZ2": { voltage: "33kV", max_load: 9.80, av_load: 4.41 },
+        "WATERBOARD": { voltage: "33kV", max_load: 5.00, av_load: 2.05 },
+        "OLAM": { voltage: "33kV", max_load: 3.90, av_load: 2.46 },
+        "FLOUR MILL": { voltage: "33kV", max_load: 5.95, av_load: 4.59 },
+        "NIGER MILLS": { voltage: "33kV", max_load: 4.00, av_load: 1.71 },
+        "DIAMOND HILLS": { voltage: "33kV", max_load: 7.50, av_load: 2.42 },
+        "STATE HOUSING": { voltage: "33kV", max_load: 5.90, av_load: 4.59 },
+        "AMIKA": { voltage: "33kV", max_load: 19.10, av_load: 9.25 },
+        "ADIABO": { voltage: "33kV", max_load: 5.30, av_load: 3.23 },
+        "TRANSCORP": { voltage: "33kV", max_load: 1.70, av_load: 0.98 },
+        "8 MILES": { voltage: "11kV", max_load: 4.60, av_load: 3.45 },
+        "ESUK UTAN": { voltage: "11kV", max_load: 0.40, av_load: 0.14 },
+        "FEDERAL HOUSING": { voltage: "11kV", max_load: 4.90, av_load: 3.91 },
+        "INDUSTRIAL": { voltage: "11kV", max_load: 5.50, av_load: 4.40 },
+        "ESSIEN TOWN": { voltage: "11kV", max_load: 5.50, av_load: 4.49 },
+        "MCC": { voltage: "11kV", max_load: 5.60, av_load: 4.44 },
+        "LEOPARD": { voltage: "11kV", max_load: 5.30, av_load: 2.01 },
+        "ESSIEN I /MARIANA": { voltage: "11kV", max_load: null, av_load: null },
+        "CAMEROUN": { voltage: "11kV", max_load: 4.30, av_load: 3.36 },
+        "UNICAL": { voltage: "11kV", max_load: 6.10, av_load: 2.56 },
+        "GOLDIE": { voltage: "11kV", max_load: 4.50, av_load: 3.42 },
+        "TARGET": { voltage: "11kV", max_load: 3.70, av_load: 2.89 },
+        "CRUTECH": { voltage: "11kV", max_load: null, av_load: null },
+        "ANANTIGHA": { voltage: "11kV", max_load: 4.00, av_load: 3.10 },
+        "IKOT ENEOBONG": { voltage: "11kV", max_load: 3.00, av_load: 2.19 },
+        "BACOCO": { voltage: "11kV", max_load: 2.90, av_load: 1.53 },
+      },
+      "OGOJA": {
+        "network_manager": { name: "Tom Udofia", phone: "+2348065957260" },
+        "ITIGIDI": { voltage: "33kV", max_load: 9.30, av_load: 3.78 },
+        "YAHE": { voltage: "33kV", max_load: 9.20, av_load: 4.33 },
+        "KATSINA ALA": { voltage: "33kV", max_load: null, av_load: null },
+        "IKOM TOWN": { voltage: "11kV", max_load: 0.80, av_load: 0.40 },
+        "FOUR CORNER": { voltage: "11kV", max_load: 0.90, av_load: 0.63 },
+      },
+      
   "UYO": {
-	"network_manager": { name: "Igho Umukoro", phone: "+2348033909058" },
-    "AKA ROAD": { voltage: "11kV" },
-    "IBB AVENUE": { voltage: "11kV" },
-    "INDONGESIT NKANGA": { voltage: "11kV" },
-    "SIR UDO UDOMA": { voltage: "11kV" },
-    "UYO ROAD": { voltage: "11kV" },
-    "EDEBOM": { voltage: "11kV" },
-    "WELLINGTON BASSEY": { voltage: "11kV" },
-    "NSASAK": { voltage: "11kV" },
-    "IKPA ROAD": { voltage: "11kV" },
-    "BROOKS": { voltage: "11kV" },
-    "AKA ITIAM": { voltage: "11kV" },
-    "EWET": { voltage: "11kV" },
-    "SHELTER AFRIQUE": { voltage: "11kV" },
-    "NWANIBA": { voltage: "11kV" },
-    "OSONG AMA": { voltage: "11kV" },
-    "WING 1": { voltage: "11kV" },
-    "WING 2": { voltage: "11kV" },
-    "WING 3": { voltage: "11kV" },
-    "WING 4": { voltage: "11kV" },
-	"CHAMPIONS BREWERIES": { voltage: "33kV" },
-    "LA MERIDIAN": { voltage: "33kV" },
-    "FOURLANE": { voltage: "33kV" },
-    "IBESIKPO": { voltage: "33kV" },
-    "ORON ROAD": { voltage: "33kV" }
+    "network_manager": { name: "Igho Umukoro", phone: "+2348033909058" },
+    "CHAMPIONS BREWERIES": { voltage: "33kV", max_load: 3.50, av_load: 1.96 },
+    "LA MERIDIAN": { voltage: "33kV", max_load: 3.00, av_load: 1.86 },
+    "FOURLANE": { voltage: "33kV", max_load: 12.50, av_load: 6.65 },
+    "IBESIKPO": { voltage: "33kV", max_load: 16.00, av_load: 6.08 },
+    "ORON ROAD": { voltage: "33kV", max_load: 11.00, av_load: 6.03 },
+    "AKA ROAD": { voltage: "11kV", max_load: 7.50, av_load: 5.67 },
+    "IBB AVENUE": { voltage: "11kV", max_load: 5.20, av_load: 3.66 },
+    "INDONGESIT NKANGA": { voltage: "11kV", max_load: 1.70, av_load: 0.47 },
+    "SIR UDO UDOMA": { voltage: "11kV", max_load: 6.00, av_load: 2.98 },
+    "UYO ROAD": { voltage: "11kV", max_load: 0.50, av_load: 0.38 },
+    "EDEBOM": { voltage: "11kV", max_load: 0.40, av_load: 0.21 },
+    "WELLINGTON BASSEY": { voltage: "11kV", max_load: 4.00, av_load: 2.84 },
+    "NSASAK": { voltage: "11kV", max_load: 4.10, av_load: 3.12 },
+    "IKPA ROAD": { voltage: "11kV", max_load: 0.90, av_load: 0.38 },
+    "BROOKS": { voltage: "11kV", max_load: 4.00, av_load: 2.84 },
+    "AKA ITIAM": { voltage: "11kV", max_load: 3.00, av_load: 2.01 },
+    "EWET": { voltage: "11kV", max_load: 3.90, av_load: 2.27 },
+    "SHELTER AFRIQUE": { voltage: "11kV", max_load: 5.80, av_load: 4.39 },
+    "NWANIBA": { voltage: "11kV", max_load: 6.10, av_load: 4.63 },
+    "OSONG AMA": { voltage: "11kV", max_load: 3.90, av_load: 2.84 },
+    "WING 1": { voltage: "11kV", max_load: 0.30, av_load: 0.15 },
+    "WING 2": { voltage: "11kV", max_load: null, av_load: null },
+    "WING 3": { voltage: "11kV", max_load: 0.20, av_load: 0.10 },
+    "WING 4": { voltage: "11kV", max_load: null, av_load: null },
   },
   "IKOT EKPENE": {
-	"network_manager": { name: "Utibe Bassey", phone: "+2347038582068, +2348020895918" },
-    "TOWN FEEDER": { voltage: "11kV" },
-    "GRA": { voltage: "11kV" },
-    "UKANA": { voltage: "11kV" },
-    "4POINT SHERATON": { voltage: "11kV" },
-    "MBAK": { voltage: "11kV" },
-    "IDORO ROAD": { voltage: "11kV" },
-	 "OKU IBOKU": { voltage: "33kV" },
-    "ITAM": { voltage: "33kV" },
-    "ABAK": { voltage: "33kV" },
-    "IKOT EKPENE": { voltage: "33kV" },
-    "OBOT AKARA": { voltage: "33kV" },
-    "AFAHA UBE": { voltage: "33kV" }
+    "network_manager": { name: "Utibe Bassey", phone: "+2347038582068" },
+    "OKU IBOKU": { voltage: "33kV", max_load: 8.30, av_load: 1.79 },
+    "ITAM": { voltage: "33kV", max_load: 10.00, av_load: 6.10 },
+    "ABAK": { voltage: "33kV", max_load: 13.00, av_load: 7.55 },
+    "IKOT EKPENE": { voltage: "33kV", max_load: 10.00, av_load: 5.30 },
+    "OBOT AKARA": { voltage: "33kV", max_load: 4.50, av_load: 2.95 },
+    "AFAHA UBE": { voltage: "33kV", max_load: 6.00, av_load: 2.50 },
+    "TOWN FEEDER": { voltage: "11kV", max_load: 6.20, av_load: 4.38 },
+    "GRA": { voltage: "11kV", max_load: 2.60, av_load: 1.41 },
+    "UKANA": { voltage: "11kV", max_load: 3.30, av_load: 2.44 },
+    "4POINT SHERATON": { voltage: "11kV", max_load: 1.10, av_load: 0.63 },
+    "MBAK": { voltage: "11kV", max_load: 2.80, av_load: 2.00 },
+    "IDORO ROAD": { voltage: "11kV", max_load: 3.60, av_load: 2.56 },
   },
   "EKET": {
 	"network_manager": { name: "Promise Wiko", phone: "+2348037961410" },
-    "IKOT IBIOK": { voltage: "11kV" },
-    "OKON": { voltage: "11kV" },
-    "QUA RIVER": { voltage: "11kV" },
-    "RCC": { voltage: "11kV" },
-    "AFAHA UQUA": { voltage: "11kV" },
-    "MARITIME": { voltage: "11kV" },
-    "MARY HARNEY": { voltage: "11kV" },
-    "IKOT AKAN": { voltage: "11kV" },
-    "ALSCON": { voltage: "11kV" },
-    "IBEKWE": { voltage: "11kV" },
-    "PORT HARCOURT ROAD": { voltage: "11kV" },
-    "ETE URBAN": { voltage: "11kV" },
-	"EKET": { voltage: "33kV" },
-    "ETINAN": { voltage: "33kV" },
-    "EKPENUKPA": { voltage: "33kV" },
-    "MBO": { voltage: "33kV" },
-    "IBENO": { voltage: "33kV" },
-    "INDUSTRIAL": { voltage: "33kV" },
-    "IKOT ABASI": { voltage: "33kV" },
-    "EKIM": { voltage: "33kV" }
+    "IKOT IBIOK": { voltage: "11kV", max_load: 5.70, av_load: 3.53 },
+    "OKON": { voltage: "11kV", max_load: 5.30, av_load: 2.48 },
+    "QUA RIVER": { voltage: "11kV", max_load: 3.30, av_load: 2.59 },
+    "RCC": { voltage: "11kV", max_load: 4.40, av_load: 2.76 },
+    "AFAHA UQUA": { voltage:  "11kV", max_load: 4.40, av_load: 2.39 },
+    "MARITIME": { voltage: "11kV", max_load: 1.70, av_load: null },
+    "MARY HARNEY": { voltage: "11kV", max_load: 1.70, av_load: 1.05 },
+    "IKOT AKAN": { voltage: "11kV", max_load: 2.50, av_load: 1.73 },
+    "ALSCON": { voltage: "11kV", max_load: null, av_load: null },
+    "IBEKWE": { voltage: "11kV", max_load: 2.50, av_load: 1.73 },
+    "PORT HARCOURT ROAD": { voltage: "11kV", max_load: null, av_load: null },
+    "ETE URBAN": { voltage: "11kV", max_load: 2.50, av_load: 1.73 },
+	"EKET": { voltage: "33kV", max_load: 13.0, av_load: 5.44 },
+    "ETINAN": { voltage: "33kV", max_load: 6.40, av_load: 4.65 },
+    "EKPENUKPA": { voltage: "33kV", max_load: 5.10, av_load: 2.61 },
+    "MBO": { voltage: "33kV", max_load: 8.10, av_load: 2.35 },
+    "IBENO": { voltage: "33kV", max_load: 1.80, av_load: 0.81 },
+    "INDUSTRIAL": { voltage: "33kV", max_load: 0.70, av_load: 0.32 },
+    "IKOT ABASI": { voltage: "33kV", max_load: 3.70, av_load: 2.15 },
+    "EKIM": { voltage: "33kV", max_load: 3.80, av_load: 1.75 }
   },
-	   "AHOADA": {
-    "network_manager": { name: "Victor Esu", phone: "+2348030947536" },
-    "ABONEMA": { voltage: "33kV" },
-    "BUGUMA": { voltage: "33kV" },
-    "ISIOKPO": { voltage: "33kV" },
-    "AHOADA": { voltage: "33kV" },
-    "EMOHUA": { voltage: "33kV" }
-  },
+	   
 };
    // Function to populate datalist with feeder names
-    function populateSuggestions() {
-      const datalist = document.getElementById("feederSuggestions");
-      datalist.innerHTML = "";
-		
-      // Iterate through each region and add feeder names
-  Object.entries(feeders).forEach(([region, feederList]) => {
-    Object.keys(feederList).forEach(feeder => {
-      // Exclude "network_manager"
-      if (feeder !== "network_manager") {
-        const option = document.createElement("option");
-        option.value = feeder;
-        datalist.appendChild(option);
-      }
+  function populateSuggestions() {
+    const datalist = document.getElementById("feederSuggestions");
+    datalist.innerHTML = "";
+
+    // Iterate through each region and add feeder names
+    Object.entries(feeders).forEach(([region, feederList]) => {
+      Object.keys(feederList).forEach(feeder => {
+        // Exclude "network_manager"
+        if (feeder !== "network_manager") {
+          const option = document.createElement("option");
+          option.value = feeder;
+          datalist.appendChild(option);
+        }
+      });
     });
-  });
+  }
+
+  function getFeederInfo() {
+    const feederName = document.getElementById("feederInput").value.trim().toUpperCase(); // Trim spaces
+    const resultDiv = document.getElementById("result");
+    let found = false;
+
+    // Iterate through each region
+    for (const [region, feederList] of Object.entries(feeders)) {
+      if (feederList[feederName]) {
+        const voltage = feederList[feederName].voltage;
+        const maxLoad = feederList[feederName].max_load !== null ? feederList[feederName].max_load : "N/A";
+        const avLoad = feederList[feederName].av_load !== null ? feederList[feederName].av_load : "N/A";
+
+        // Get network manager details
+        const manager = feederList["network_manager"];
+        const managerName = manager ? manager.name : "N/A";
+        const managerPhone = manager ? manager.phone : "N/A";
+
+        resultDiv.innerHTML = `
+          <strong>${feederName}</strong>  <strong>${voltage}</strong> feeder is in <strong>${region}</strong> region.<br><br>
+          <div style="display:flex;justify-content:center; align-content:center"><div style="background:red; width:40%; padding:5px; color:#fff; margin-right:20px"><strong>Max Load:</strong> ${maxLoad} MW</div>
+          <div style="background:green; width:40%; padding:5px; color:#fff;float:right"><strong>Average Load:</strong> ${avLoad} MW</div></div><br>
+          <strong>Network Manager: <span style="color:green">${managerName}, ${managerPhone} </span></strong>
+        `;
+        found = true;
+        break;
+      }
     }
 
-     function getFeederInfo() {
-  const feederName = document.getElementById("feederInput").value.trim().toUpperCase(); // Trim spaces
-  const resultDiv = document.getElementById("result");
-  let found = false;
-
-  // Iterate through each region
-  for (const [region, feederList] of Object.entries(feeders)) {
-    if (feederList[feederName]) {
-      const voltage = feederList[feederName].voltage;
-
-      // Get network manager details
-      const manager = feederList["network_manager"];
-      const managerName = manager ? manager.name : "N/A";
-      const managerPhone = manager ? manager.phone : "N/A";
-
-      resultDiv.innerHTML = `
-        <strong>${feederName}</strong>  <strong>${voltage}</strong> feeder is in <strong>${region}</strong> region.<br><br>
-        <strong> Network Manager:</strong> ${managerName} <br>
-        <strong>Phone:</strong> ${managerPhone}
-      `;
-      found = true;
-      break;
+    if (!found) {
+      resultDiv.innerHTML = `Feeder <strong>${feederName}</strong> not found in the database.`;
     }
   }
 
-  if (!found) {
-    resultDiv.innerHTML = `Feeder <strong>${feederName}</strong> not found in the database.`;
-  }
-}
-    // Populate suggestions when the page loads
-    populateSuggestions();
-  </script>
-	<footer style="position: absolute; bottom:10px; text-align: center; font-size: 12px; color:purple;">
+  // Populate suggestions when the page loads
+  populateSuggestions();
+</script>
+	
+<footer style="position: absolute; bottom:10px; text-align: center; font-size: 12px; color:purple;">
     &copy; <script>document.write(new Date().getFullYear());</script> Obot Akpan. All rights reserved.
 </footer>
 </body>
